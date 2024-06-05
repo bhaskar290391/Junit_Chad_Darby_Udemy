@@ -2,6 +2,7 @@ package com.luv2code.junitdemo;
 
 import org.junit.jupiter.api.*;
 
+import java.time.Duration;
 import java.util.List;
 
 import static  org.junit.jupiter.api.Assertions.*;
@@ -92,5 +93,20 @@ public class DemoUtilsTest {
     public void lineMatch(){
         List<String> data=List.of("luv","2","code");
         assertLinesMatch(data,demo.getAcademyInList());
+    }
+
+
+    @Test
+    @DisplayName("Timeout")
+    public void timeout(){
+        assertTimeoutPreemptively(Duration.ofSeconds(3),()->{demo.checkTimeout();});
+    }
+
+
+    @Test
+    @DisplayName("Throws and Not Throws")
+    public void assertTestThrows(){
+        assertThrows(Exception.class,()-> {demo.throwException(-1);});
+        assertDoesNotThrow(()-> {demo.throwException(5);});
     }
 }
