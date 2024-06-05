@@ -10,6 +10,11 @@ import static  org.junit.jupiter.api.Assertions.*;
 //@DisplayNameGeneration(DisplayNameGenerator.Simple.class)
 //@DisplayNameGeneration(DisplayNameGenerator.IndicativeSentences.class)
 //@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+
+@TestMethodOrder(MethodOrderer.DisplayName.class)
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@TestMethodOrder(MethodOrderer.MethodName.class)
+//@TestMethodOrder(MethodOrderer.Random.class)
 public class DemoUtilsTest {
 
     private DemoUtils demo;
@@ -81,6 +86,7 @@ public class DemoUtilsTest {
     }
 
     @Test
+    @Order(2)
     @DisplayName("Array Iterable Test")
     public void iterableEquals(){
         List<String> data=List.of("luv","2","code");
@@ -97,6 +103,7 @@ public class DemoUtilsTest {
 
 
     @Test
+    @Order(1)
     @DisplayName("Timeout")
     public void timeout(){
         assertTimeoutPreemptively(Duration.ofSeconds(3),()->{demo.checkTimeout();});
