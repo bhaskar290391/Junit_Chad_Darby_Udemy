@@ -51,6 +51,11 @@ public class DemoUtilsTest {
 
 
     @Test
+    @DisplayName("Multiply")
+    void multiplyTest(){
+        assertEquals(12,demo.multiply(4,3));
+    }
+    @Test
     @DisplayName("Null and Not Nulls")
     public void checkNullAndNotNull(){
         System.out.println("Running Test ==> checkNullAndNotNull()");
