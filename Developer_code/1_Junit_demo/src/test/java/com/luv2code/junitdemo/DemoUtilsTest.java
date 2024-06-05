@@ -2,6 +2,8 @@ package com.luv2code.junitdemo;
 
 import org.junit.jupiter.api.*;
 
+import java.util.List;
+
 import static  org.junit.jupiter.api.Assertions.*;
 
 //@DisplayNameGeneration(DisplayNameGenerator.Simple.class)
@@ -68,5 +70,27 @@ public class DemoUtilsTest {
     public void trueAndFalse(){
         assertTrue(demo.isGreater(10,5),"This should return true");
         assertFalse(demo.isGreater(5,10),"This should return false");
+    }
+
+    @Test
+    @DisplayName("Array Equal")
+    public void arrayEquals(){
+        String[] data={"A", "B", "C"};
+        assertArrayEquals(data,demo.getFirstThreeLettersOfAlphabet(),"Array should be Equals");
+    }
+
+    @Test
+    @DisplayName("Array Iterable Test")
+    public void iterableEquals(){
+        List<String> data=List.of("luv","2","code");
+        assertIterableEquals(data,demo.getAcademyInList());
+    }
+
+
+    @Test
+    @DisplayName("Assert Line Match")
+    public void lineMatch(){
+        List<String> data=List.of("luv","2","code");
+        assertLinesMatch(data,demo.getAcademyInList());
     }
 }
